@@ -34,3 +34,5 @@ force_dat.dat -> if the program doesn't check the file for some reason (i.e. the
 I have also added 2 additional .bat files that help with certain stuff. First one is uninstallexts.dat, which is used to delete all extra apps installed by atstartup or atinsert
 
 and alwaysinit.bat which skips the lmao69.dat check (to check for .bat or initcopy)
+
+## Current version: 3.1
