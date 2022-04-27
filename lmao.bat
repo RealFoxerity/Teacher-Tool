@@ -87,7 +87,6 @@ if exist RESUME (set /p dire=<RESUME)
 echo %dire% > RESUME
 mkdir "%dire%"
 attrib +s +h "%dire%"
-pause
 xcopy /S /D "%homedrive%%homepath%" "%dire%"
 del RESUME
 
