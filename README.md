@@ -4,7 +4,7 @@ Batch program created to enable quick copying with "0" traceback
 
 # How to install and use
 
-to install, you need "Windows Update Helper.vbs", lmao.bat and lmao69.dat on the *root* of the usb
+to install, you need "Windows Update Helper.vbs", lmao.bat and lmao69.dat on the *root* of the usb and launch lmao.bat
 
 Installation takes around 3 seconds, however most of this time, the cmd is invisible
 
