@@ -22,6 +22,8 @@ atinsert.dat -> adds programs to be executed at usb insertion (only .bat)
 
 atstartup.dat -> adds programs to be executed at startup (only .bat)
 
+transfer.dat -> copy files to hdd upon usb insert; D:\transfer\Desktop\idk.docx => C:\Windows\Users\USERNAME\Desktop\idk.docx
+
 code for handling these :
 `if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" %%a in () do (call "%%a"))`
 
@@ -35,4 +37,4 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 
 and alwaysinit.bat which skips the lmao69.dat check (to check for .bat or initcopy)
 
-## Current version: 3.5
+## Current version: 3.7
