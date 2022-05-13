@@ -37,4 +37,7 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 
 and alwaysinit.bat which skips the lmao69.dat check (to check for .bat or initcopy)
 
+# NOTE
+
+at insert and at startup date change CRASHES THE APP if the folders are empty!
 ## Current version: 3.7
