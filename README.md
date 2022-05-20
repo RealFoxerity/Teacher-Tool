@@ -41,6 +41,6 @@ and alwaysinit.bat which skips the lmao69.dat check (to check for .bat or initco
 
 at insert and at startup date change CRASHES THE APP if the folders are empty! (3.7 updated and 4.0 removes this bug)
 ## Current version: 3.7
-## Current Debug Version: 4.0 (currently testing for bugs)
-### I am not responsible for any problems that may arise while using this tool
-### Only for educational purposes
+### Current Debug Version: 4.0 (currently testing for bugs)
+I am not responsible for any problems that may arise while using this tool
+Only for educational purposes
