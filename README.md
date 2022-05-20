@@ -17,9 +17,9 @@ dontcopy.dat -> disables copying (OPTIONAL)
 
 UNIN000.dat -> uninstalls the "tool" (OPTIONAL)  
 
-atinsert.dat -> adds programs to be executed at usb insertion (only .bat) (OPTIONAL)  
+atinsert.dat -> adds programs to be executed at usb insertion (only .bat); works only if name in lmao69.dat (OPTIONAL) 
 
-atstartup.dat -> adds programs to be executed at startup (only .bat) (OPTIONAL)  
+atstartup.dat -> adds programs to be executed at startup (only .bat); works only if name in lmao69.dat (OPTIONAL)  
 code for handling these (since 3.5 filtering to only launch .bat):
 `if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" %%a in (*.bat) do (call "%%a"))`  
 
