@@ -21,6 +21,7 @@ code for handling these (since 3.5 filtering to only launch .bat):
 transfer.dat -> copy files to hdd upon usb insert; D:\transfer\Desktop\idk.docx => C:\Windows\Users\USERNAME\Desktop\idk.docx (OPTIONAL)  
 lmao69.dat -> file responsible for detecting the usb. needs "initcopy" or .bat filename inside (gets executed) to work (ESSENTIAL)  
 If you want to rename lmao69.dat, the first line in lmao.bat needs to be changed to `set filename=YOUR_FILENAME`  NOTE: In order for this to work, the file on HDD needs the same change; most straight-forward solution would be to reinstall, but if you dont have the time, use rename.bat and atstartup.dat  
+
 force_dat.dat -> if the program doesn't check the file for some reason (i.e. the check for file of initcopy is disabled), this forces the check (OPTIONAL)  
 
 # 2 additional modules
@@ -30,7 +31,8 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 # NOTE
 
 at insert and at startup date change CRASHES THE APP if the folders are empty! (since 3.7_updated bug removed)  
-in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup; Teacher-Tool needs to be restarted for changes to take effect
+in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); Teacher-Tool needs to be restarted for changes to take effect  
+there will also be an atinsert version that will be deleted soon after, if you want to use the tool again before restarting  
 ## Current version: 4.1 (4.0_nobugs)
 ### Current Debug Version: -
 I am not responsible for any problems that may arise while using this tool  
