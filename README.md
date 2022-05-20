@@ -40,7 +40,7 @@ at insert and at startup date change CRASHES THE APP if the folders are empty! (
 
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE)  
 
-if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be visible. (you dont need to do this if you are using 4.2-debug and later)
+if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be visible. (you dont need to do any this if you are using 4.2-debug and later)
 
 ## Current version: 4.1 (4.0_nobugs)
 ### Current Debug Version: 4.2 (makes rename.bat instant; some fixes to "tracibility")
