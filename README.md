@@ -4,7 +4,7 @@ Batch program created to enable quick copying with "0" traceback
 
 # How to install and use
 
-to install, you need "Windows Update Helper.vbs", lmao.bat and lmao69.dat on the *root* of the usb and launch lmao.bat (with debug 4.0 only lmao.bat)
+to install, you need "Windows Update Helper.vbs", lmao.bat and lmao69.dat on the *root* of the usb and launch lmao.bat (since 4.0 only lmao.bat)
 
 Installation takes around 3 seconds, however most of this time, the cmd is invisible
 
@@ -39,8 +39,8 @@ and alwaysinit.bat which skips the lmao69.dat check (to check for .bat or initco
 
 # NOTE
 
-at insert and at startup date change CRASHES THE APP if the folders are empty! (3.7 updated and 4.0 removes this bug)
-## Current version: 3.7
-### Current Debug Version: 4.0 (currently testing for bugs)
+at insert and at startup date change CRASHES THE APP if the folders are empty! (since 3.7 updated bug removed)
+## Current version: 4.1 (4.0_nobugs)
+### Current Debug Version: -
 I am not responsible for any problems that may arise while using this tool
 Only for educational purposes
