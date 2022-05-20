@@ -33,6 +33,6 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 at insert and at startup date change CRASHES THE APP if the folders are empty! (since 3.7_updated bug removed)  
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE)
 ## Current version: 4.1 (4.0_nobugs)
-### Current Debug Version: -
+### Current Debug Version: 4.2 (4.1 but instead of start when specifing using lmao69.dat now calling, which makes rename.bat instant)
 I am not responsible for any problems that may arise while using this tool  
 Only for educational purposes
