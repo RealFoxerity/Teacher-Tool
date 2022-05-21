@@ -2,6 +2,8 @@
 
 Batch program created to enable quick copying with "0" traceback   
 
+HIGLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS
+
 # How to install and use
 
 to install, you need "Windows Update Helper.vbs", lmao.bat and lmao69.dat on the *root* of the usb and launch lmao.bat (since 4.0-debug only lmao.bat)  
@@ -30,19 +32,23 @@ If you want to rename lmao69.dat, the first line in lmao.bat needs to be changed
 
 force_dat.dat -> if the program doesn't check the file for some reason (i.e. the check for file of initcopy is disabled), this forces the check (OPTIONAL)  
 
+debugmsg.dat -> since 4.5-DEBUGrelease, enables return to normal behavior, in case you dont want the pretty variant (OPTIONAL)  
+
 # 2 additional modules
 
 I have also added 2 additional .bat files that help with certain stuff. First one is uninstallexts.dat, which is used to delete all extra apps installed by atstartup or atinsert and alwaysinit.bat which skips the lmao69.dat check (to check for .bat or initcopy)  
 
 # NOTE
 
-at insert and at startup date change CRASHES THE APP if the folders are empty! (since 3.7_updated bug removed)  
+atinsert and atstartup date change CRASHES THE APP if the folders are empty! (since 3.7_updated bug removed)  
 
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE)  
 
-if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be visible. (you dont need to do any this if you are using 4.2-debug and later)
+if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be invisible. (you dont need to do any this if you are using 4.2-debug and later)
+
+CURRENTLY, UPDATES FROM HDD NOT WORKING (fixed since 4.3(not present -> 4.5-DEBUGrelease))
 
 ## Current version: 4.1 (4.0_nobugs)
-### Current Debug Version: 4.2 (makes rename.bat instant; some fixes to "traceability")
+### Current Debug Version: 4.5 (HUGE fixes, see additional info for release)
 I am not responsible for any problems that may arise while using this tool. 
 Only for educational purposes
