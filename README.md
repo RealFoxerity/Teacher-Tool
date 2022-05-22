@@ -52,8 +52,9 @@ Set WshShell = Nothing
 ```
 
 ## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
-### Current Debug Version: -
-I am not responsible for any problems that may arise while using this tool. 
-Only for educational purposes
+### Current Debug Version: -  
+-------------------
+#### I am not responsible for any problems that may arise while using this tool.  
+#### Only for educational purposes
 -------------------
 if testing out previous versions (aside of above mentioned issue and the one at the beginning), read "readmes" in their releases, this one obviously doesnt apply to them
