@@ -3,11 +3,10 @@
 Batch program created to enable quick copying with "0" traceback   
 
 HIGLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS  
-USE NEWER DEBUG THIS ONE HAS SEVERE BUGS; WILL UPDATE SOON
 
 # How to install and use
 
-to install, you need lmao.bat; others will be generated automatically (if you have >= 4.0)
+to install, you need lmao.bat; others will be generated automatically
 Installation takes around 1.5 seconds, however most of this time, the cmd is invisible  
 
 after install you only need lmao69.dat with "initcopy" inside (without quotes)  
