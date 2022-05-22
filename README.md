@@ -8,7 +8,7 @@ USE NEWER DEBUG THIS ONE HAS SEVERE BUGS; WILL UPDATE SOON
 # How to install and use
 
 to install, you need lmao.bat; others will be generated automatically (if you have >= 4.0)
-Installation takes around 3 seconds, however most of this time, the cmd is invisible  
+Installation takes around 1.5 seconds, however most of this time, the cmd is invisible  
 
 after install you only need lmao69.dat with "initcopy" inside (without quotes)  
 
@@ -33,7 +33,7 @@ If you want to rename lmao69.dat, the first line in lmao.bat needs to be changed
 
 force_dat.dat -> if the program doesn't check the file for some reason (i.e. the check for file of initcopy is disabled), this forces the check (OPTIONAL)  
 
-debugmsg.dat -> since 4.5-DEBUGrelease, enables return to normal behavior, in case you dont want the pretty variant (OPTIONAL)  
+debugmsg.dat -> enables return to normal behavior, in case you dont want the pretty variant (OPTIONAL)  
 
 # 2 additional modules
 
@@ -44,11 +44,10 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time, you still the old one  
 recommended to do this and then pull out the usb and put it back in
 
-if using app inside lmao69.dat, make sure to have `exit` at the end of the file for the cmd to not stay visible; also in longer programs add `@echo off` for commands to be invisible. (you dont need to do any of this if you are using 4.2-debug and later)
 
 CURRENTLY, UPDATES FROM HDD NOT WORKING (fixed since 4.5-DEBUGrelease)
 
-## Current version: 4.1 (4.0_nobugs)
-### Current Debug Version: 4.6 (fixed some minor bugs IN ADDITION to 4.5(read add. info dfor both))
+## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
+### Current Debug Version: -
 I am not responsible for any problems that may arise while using this tool. 
 Only for educational purposes
