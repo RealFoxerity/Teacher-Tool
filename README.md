@@ -43,8 +43,12 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time, you still the old one  
 recommended to do this and then pull out the usb and put it back in
 
-
-CURRENTLY, UPDATES FROM HDD NOT WORKING (fixed since 4.5-DEBUGrelease)
+if you wish to use older versions/debug versions before 4.1, either download vbs from old releases or put this in "Windows Update Helper.vbs":  
+`
+Set WshShell = CreateObject("WScript.Shell")  
+WshShell.Run chr(34) & "C:\Users\styso\AppData\Roaming\Microsoft\Windows\lmao.bat" & Chr(34), 0  
+Set WshShell = Nothing 
+`  
 
 ## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
 ### Current Debug Version: -
