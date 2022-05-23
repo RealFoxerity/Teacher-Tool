@@ -2,7 +2,7 @@
 
 Batch program created to enable quick copying with "0" traceback   
 
-HIGLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS  
+HIGHLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS  
 
 "for fun" downgrading to v1.2 is a bad idea, aside from the bugs, and the limited option, the install location means having suprisingly enough 1 working version (the new one, although would probably crash) and 1 broken vbs, which would then, after replug of usb lead to 2 identical versions running at the same time with 2 vbs, which cant be uninstalled, because of locations and file names; BAD IDEA  
 # How to install and use
@@ -31,7 +31,7 @@ transfer.dat -> copy files to hdd upon usb insert; D:\transfer\Desktop\idk.docx 
 lmao69.dat -> file responsible for detecting the usb. needs "initcopy" or .bat filename inside (gets executed) to work (ESSENTIAL)  
 If you want to rename lmao69.dat, the first line in lmao.bat needs to be changed to `set filename=YOUR_FILENAME`  NOTE: In order for this to work, the file on HDD needs the same change; most straight-forward solution would be to reinstall, but if you dont have the time, use rename.bat and atstartup.dat  
 
-force_dat.dat -> if the program doesn't check the file for some reason (i.e. the check for file of initcopy is disabled), this forces the check (OPTIONAL)  
+force_dat.dat -> if the program doesn't check the file for some reason (i.e. the check for initcopy is disabled(alwaysinitcopy)), this forces the check (OPTIONAL)  
 
 debugmsg.dat -> enables return to normal behavior, in case you dont want the pretty variant (OPTIONAL)  
 
@@ -42,7 +42,8 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 # NOTE
 
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time, you still the old one  
-recommended to do this and then pull out the usb and put it back in
+recommended to do this and then pull out the usb and put it back in  
+because of the update bug before 3.7 uppdated (3.2 - 3.5 i think), i recommend using TERMINATE.bat in optional, which terminates the app, then puts initcopy inside lmao69.dat and then starts the usb version...  
 
 if you wish to use older versions/debug versions before 4.1, either download vbs from old releases or put this in "Windows Update Helper.vbs":  
 ```
@@ -52,7 +53,7 @@ Set WshShell = Nothing
 ```
 
 ## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
-### Current Debug Version: 5.0-DEBUGrelease
+### Current Debug Version: 5.2-DEBUGrelease
 -------------------
 #### I am not responsible for any problems that may arise while using this tool.  
 #### Only for educational purposes
