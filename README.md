@@ -61,7 +61,7 @@ Set WshShell = Nothing
 ```
 
 ## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
-### Current Debug Version: 5.2-DEBUGrelease
+### Current Debug Version: 5.2-DEBUGrelease (also 5.3 - 5.2 with moved comments and ownership)
 -------------------
 #### I am not responsible for any problems that may arise while using this tool.  
 #### Only for educational purposes
