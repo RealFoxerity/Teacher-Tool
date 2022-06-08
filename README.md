@@ -1,5 +1,4 @@
-### AVAST DETECTED PROGRAM-MADE VBS, BUT I ADDED COMMENTS(yes that is all it took) AND NOW IT DOESNT DETECT, BUT BE CAREFUL  
-### OLDER RELEASES WILL NOT BE FIXED, BUT ANYTHING FROM 4.7 ONWARD IS FIXED
+### OLDER RELEASES ARE DETECTED AS TROJANS, BUT ANYTHING FROM 4.7 ONWARD IS FIXED
 
 # Teacher-Tool
 
@@ -60,7 +59,7 @@ Set WshShell = Nothing
 'idk
 ```
 
-## Current version: 4.7 (4.6-DEBUGrelease-noverbugs)
+## Current version: 5.4 (5.3 with attribute edits for usb)
 ### Current Debug Version: 5.2-DEBUGrelease (also 5.3 - 5.2 with moved comments and ownership)
 -------------------
 #### I am not responsible for any problems that may arise while using this tool.  
