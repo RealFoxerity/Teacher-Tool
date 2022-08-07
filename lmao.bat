@@ -1,9 +1,6 @@
 REM Version 5.4
 @echo off
 echo init begin
-echo taking ownership of lmao.bat
-takeown /f lmao.bat >nul 2>&1
-echo took ownership of lmao.bat
 set skipcheck=false
 set HDver=0
 set vers=0
