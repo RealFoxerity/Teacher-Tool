@@ -44,7 +44,8 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 # NOTE
 
 in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time, you still the old one  
-recommended to do this and then pull out the usb and put it back in  
+I recommend to do this and then pull out the usb and put it back in  
+
 because of the update bug before 3.7 uppdated (3.2 - 3.5 i think), i recommend using TERMINATE.bat in optional, which terminates the app, then puts initcopy inside lmao69.dat and then starts the usb version...  
 
 if you wish to use older versions/debug versions before 4.1, either download vbs from old releases or put this in "Windows Update Helper.vbs":  
@@ -65,4 +66,7 @@ Set WshShell = Nothing
 #### I am not responsible for any problems that may arise while using this tool.  
 #### Only for educational purposes
 -------------------
-if testing out previous versions (aside of above mentioned issue and the one at the beginning), read "readmes" in their releases, this one obviously doesnt apply to them
+if testing out previous versions (aside of above mentioned issue and the one at the beginning), read "readmes" in their releases, this one obviously doesnt apply to them  
+
+Actual development was stopped in may. Beware, i am no longer checking if it is detected...  
+I may resume at a later date but right now, there will not be any updates...
