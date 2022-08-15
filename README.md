@@ -6,6 +6,8 @@ Batch program created to enable quick copying with "0" traceback
 
 HIGHLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS  
 
+Version warning for below 4.5 is not working...  
+
 "for fun" downgrading to v1.2 is a bad idea, aside from the bugs, and the limited option, the install location means having suprisingly enough 1 working version (the new one, although would probably crash) and 1 broken vbs, which would then, after replug of usb lead to 2 identical versions running at the same time with 2 vbs, which cant be uninstalled, because of locations and file names; BAD IDEA  
 # How to install and use
 
