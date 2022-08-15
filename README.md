@@ -1,12 +1,12 @@
-### OLDER RELEASES ARE DETECTED AS TROJANS, BUT ANYTHING FROM 4.7 ONWARD IS FIXED
-
+### OLDER RELEASES ARE DETECTED AS TROJANS, BUT ANYTHING FROM 4.7 ONWARDS IS FIXED  
+### Malwarebytes detects(i think?) vbs file and disables the program on startup... avast still doesnt.  
 # Teacher-Tool
 
 Batch program created to enable quick copying with "0" traceback   
 
 HIGHLY ENCOURAGED TO USE NEWER VERSIONS, OLDER MAY HAVE SEVERE BUGS  
 
-Version warning for below 4.5 is not working...  
+Version warning for below 4.5 is not working(beware.dat)...  
 
 "for fun" downgrading to v1.2 is a bad idea, aside from the bugs, and the limited option, the install location means having suprisingly enough 1 working version (the new one, although would probably crash) and 1 broken vbs, which would then, after replug of usb lead to 2 identical versions running at the same time with 2 vbs, which cant be uninstalled, because of locations and file names; BAD IDEA  
 # How to install and use
@@ -63,12 +63,12 @@ Set WshShell = Nothing
 ```
 
 ## Current version: 5.4 (5.3 with attribute edits for usb)
-### Current Debug Version: 5.2-DEBUGrelease (also 5.3 - 5.2 with moved comments and ownership)
+### Current Debug Version: 5.5[DEBUGrelease] (5.4 with some removed lines, fixed beware.dat, fixed titles and added installing... instead of upgrading while ... installing)  
 -------------------
 #### I am not responsible for any problems that may arise while using this tool.  
 #### Only for educational purposes
 -------------------
 if testing out previous versions (aside of above mentioned issue and the one at the beginning), read "readmes" in their releases, this one obviously doesnt apply to them  
 
-Actual development was stopped in may. Beware, i am no longer checking if it is detected...  
+Actual development was stopped in may 2022. Beware, i am no longer checking if it is detected...  
 I may resume at a later date but right now, there will not be any updates...
