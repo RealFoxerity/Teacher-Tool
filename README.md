@@ -1,4 +1,5 @@
 ### OLDER RELEASES ARE DETECTED AS TROJANS, BUT ANYTHING FROM 4.7 ONWARDS IS FIXED  
+### Teacher-Tool does not handle UTF characters like ů, ú, ř, š, etc... Do not use them
 ### Malwarebytes detects(i think?) vbs file and disables the program on startup... avast still doesnt.  
 # Teacher-Tool
 
