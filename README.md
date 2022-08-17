@@ -73,8 +73,10 @@ if testing out previous versions (aside of above mentioned issue and the one at 
 ~~Actual development was stopped in may 2022. Beware, i am no longer checking if it is detected...~~  
 ~~I may resume at a later date but right now, there will not be any updates...~~
 
+#To-Do
 Currently working on .bat launched script with a ~~small window~~ because malwarebytes and similar are disabling vbs... -> DONE  
 Also adding a new file to add scripts instead of current copy methods. -> DONE  
 And as an example for that feature i am also making a copy script to work with a list file, so that you know what files were copied. -> WORKING ON  
 Side effect of this will be, that you can have only the list instead of the files, so next time you plug in the usb, you dont need the files to still be present...  -> OBVIOUSLY WORKING ON  
+Add a way to store those scripts on the hdd instead of having to have them on the usb -> WORKING ON  
 Once all are done, i will post an updated version
