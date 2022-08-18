@@ -33,7 +33,7 @@ code for handling these:
 transfer.dat -> copy files to hdd upon usb insert; D:\transfer\Desktop\idk.docx => C:\Windows\Users\USERNAME\Desktop\idk.docx (OPTIONAL)  
 
 lmao69.dat -> file responsible for detecting the usb. needs "initcopy" or .bat filename inside (gets executed) to work (ESSENTIAL)  
-If you want to rename lmao69.dat, the 38th line in lmao.bat needs to be changed to `set filename=YOUR_FILENAME`  NOTE: In order for this to work, the file on HDD needs the same change; most straight-forward solution would be to reinstall, but if you dont have the time, use rename.bat and atstartup.dat  
+If you want to rename lmao69.dat, the 46th line in lmao.bat needs to be changed to `set filename=YOUR_FILENAME`  NOTE: In order for this to work, the file on HDD needs the same change; see below
 
 force_dat.dat -> if the program doesn't check the file for some reason (i.e. the check for initcopy is disabled(alwaysinitcopy)), this forces the check (OPTIONAL)  
 
@@ -70,7 +70,7 @@ warning: this creates 5 files and 2 folders, all  hidden, but still(literally ca
 
 # NOTE
 
-~~in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time(install the file), you still the old one~~  < just do forceupd.dat with lmao.bat on usb with edited line(clearly visible if you open with notepad) and for the first time include both lmao69.dat and your custom  
+~~in order to change filename and not reinstall(i.e. dont have the time), use rename.bat(in optional) with atstartup(CHANGE LINE IN FILE); for the first time(install the file), you still the old one~~  < just do forceupd.dat with lmao.bat on usb with edited line(kinda _findable_(ln 46) if you open with notepad) and for the first time include both lmao69.dat and your custom  
 
 use TERMINATE.bat to escape >3.7 bugged update (put filename in lmao69.dat(or custom name))
 
