@@ -54,7 +54,7 @@ skipdatechange.dat -> ...skips datechange, thus speeding up hdd init(after insta
 no/skip.dat -> internally saves elseabortcopy for custom scripts  
 alreadycopied.dat, copied.dat -> files used to save install progress  
 beware.dat -> generated if downgraded >4.5[DBGrls]  
-<7.0 - doing.dat -> redundant file used in certain DBGrls for copy status, remains in :whileexist  
+<7.0 - doing.dat -> redundant file used in certain DBGrls for copy status, remains in :whileexist(still in this version)  
 ~debugmsg.dat -> debugmsg option copied to hdd, so that debugmsg lasts for the entire program  
 lst.dat -> used by add. mod. CCS to store copied files alongside a few other with bad names  
 
