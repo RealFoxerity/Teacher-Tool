@@ -77,13 +77,14 @@ if testing out previous versions (aside of above mentioned issue and the one at 
 # To-Do  
 Currently working on .bat launched script with a ~~small window~~ because malwarebytes and similar are disabling vbs... -> DONE  
 Also adding a new file to add scripts instead of current copy methods. -> DONE  
-And as an example for that feature i am also making a copy script to work with a list file, so that you know what files were copied. -> WORKING ON  
-Side effect of this will be, that you can have only the list instead of the files, so next time you plug in the usb, you dont need the files to still be present...  -> OBVIOUSLY WORKING ON  
+And as an example for that feature i am also making a copy script to work with a list file, so that you know what files were copied. -> kinda*  
+Side effect of this will be, that you can have only the list instead of the files, so next time you plug in the usb, you dont need the files to still be present...  -> kinda*   
 Add a way to store those scripts on the hdd instead of having to have them on the usb -> DONE  
+*works, but needs to create 5 other files(hidden) and doesnt work for certain symbols(aka if in file = error, file not copied) like &, ^(these are the only tested ones...)
 
 Also made a way to easily remove these scripts once installed and added a fallback to normal copying if necessery with an additional file to cancel this fallback, which is also stored on the hdd...  
 also  made a file to skip datechange if the speed is needed or if you are debugging...  
 also made a file to force an update, cuz i was to lazy to keep renaming the version header...  
 added datechange for custom scripts...  
-###### i am kinda scared of the copy list script ngl  
-Once all are done, i will post an updated version(probably 6.5 or even 7.0)
+Once all are done, i will post an updated version (7.0)  
+^= no bugs, or i give up
