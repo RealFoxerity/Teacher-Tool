@@ -40,7 +40,7 @@ force_dat.dat -> if the program doesn't check the file for some reason (i.e. the
 debugmsg.dat -> enables return to normal behavior, in case you dont want the pretty variant (OPTIONAL)[DEBUG]  
 ## >=7.0
 
-customcopy.dat -> will force TT to use a custom .bat script instead of default copy command(put .bat script into file), if launch fails, reverts to default (see add. modules > 7.0) (OPTIONAL)  
+customcopy.dat -> will force TT to use a custom .bat script instead of default copy command(put .bat script into file), if launch fails, reverts to default (see add. modules - CCS) (OPTIONAL)  
 
 elseabortcopy.dat -> instead of default fallback for the above, if fails, skips default copy script (OPTIONAL)  
 
@@ -50,7 +50,6 @@ forceupd.dat -> forces update/reinstall even if the version on the hdd is the sa
 
 skipdatechange.dat -> ...skips datechange, thus speeding up hdd init(after install) by about 2 secs (OPTIONAL)[DEBUG]  
 
-------------
 ## INTERNAL
 no/skip.dat -> internally saves elseabortcopy for custom scripts  
 alreadycopied.dat, copied.dat -> files used to save install progress  
@@ -58,7 +57,6 @@ beware.dat -> generated if downgraded >4.5[DBGrls]
 <7.0 - doing.dat -> redundant file used in certain DBGrls for copy status, remains in :whileexist  
 ~debugmsg.dat -> debugmsg option copied to hdd, so that debugmsg lasts for the entire program  
 lst.dat -> used by add. mod. CCS to store copied files alongside a few other with bad names  
-------------
 
 # 3 additional modules
 
