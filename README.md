@@ -66,7 +66,8 @@ I have also added 2 additional .bat files that help with certain stuff. First on
 ## compile custom script.bat (#3)
 A custom copy script, where i gave up at 95%(symbols like & and ^ spit out errors if in files...). Allows resume of copying with only a list file on usb  
 This means, that if your usb completely fills up, you can unplug the usb, delete the files and CCS will resume where it left off (lst.dat MUST be on the usb)  
-warning: this creates 5 files and 2 folders, all  hidden, but still(literally cannot be done with less files, i tried); also the dir. structure has to be remade...
+warning: this creates 5 files and 2 folders, all  hidden, but still(literally cannot be done with less files, i tried); also the dir. structure has to be remade...  
+I DO NOT RECOMMEND THIS SCRIPT FOR REALLY USED COMPUTERS; on frequently used PCs, the dir. structure can be massive and the time loss is too great for this to be meaningfull...  
 
 # NOTE
 
