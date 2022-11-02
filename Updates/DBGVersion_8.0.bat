@@ -1,4 +1,4 @@
-REM DBGVersion 8.0
+REM DBGVersion 7.9
 @echo off
 echo init begin
 
@@ -53,7 +53,7 @@ set HDver=%HDver:[DEBUGrelease]=%
 REM here for compatibility
 
 
-REM Downloading upd info
+echo Downloading upd info
 if not %DBGVer%==DBG (
 curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentVer.dat >ver.dat
 ) else (
@@ -234,7 +234,7 @@ goto :createvbs
 echo vbs and startup bat installed
 if %UpdatedFromOnline%==True (if %WillUpd%==False (
 echo "https://github.com/RealFoxerity/Teacher-Tool/blob/main/Updates/%NewVer%.bat"
-curl -O --ssl-no-revoke "https://github.com/RealFoxerity/Teacher-Tool/blob/main/Updates/%NewVer%.bat"
+curl -O --ssl-no-revoke "https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/%NewVer%.bat"
 echo Calling downloaded bat...
 call "%NewVer%.bat"
 )
