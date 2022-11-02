@@ -1,4 +1,4 @@
-REM DBGVersion 8.1
+REM DBGVersion 8.0
 @echo off
 echo init begin
 
@@ -258,6 +258,12 @@ attrib +h alreadycopied.dat
 echo x >"%appdata%\Microsoft\Windows\updating.dat"
 echo getting back on hdd version
 goto :miss
+)
+
+if "%UpdatedFromOnline%"=="True" (
+if %dirr%==FLASH (
+goto :miss
+)
 )
 
 if %copied%==false (
