@@ -249,7 +249,10 @@ attrib +s +h lmao.bat
 echo new lmao.bat installed
 )
 :skipupdate
-if "%UpdatedFromOnline%"=="True" (goto :AfterOnlineUpd && echo Online update was completed successfully...)
+if "%UpdatedFromOnline%"=="True" (if "%UpdatedFromOnline%"=="True" (
+if %dirr%==FLASH (
+goto :miss
+) && goto :AfterOnlineUpd && echo Online update was completed successfully...)
 
 attrib -h alreadycopied.dat
 echo true >alreadycopied.dat
@@ -260,11 +263,7 @@ echo getting back on hdd version
 goto :miss
 )
 
-if "%UpdatedFromOnline%"=="True" (
-if %dirr%==FLASH (
-goto :miss
-)
-)
+
 
 if %copied%==false (
 if %dirr%==HDD (
