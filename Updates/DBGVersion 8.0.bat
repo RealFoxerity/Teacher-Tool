@@ -37,7 +37,8 @@ set skipcheck=true
 )
 )
 set HDDver=%HDDver:REM =%
-if %HDDver:~0,3%==DBG (set DBGVer=True && echo Using DBG version... Beware!) else (set DBGVer=False)
+set DBGVer=%HDDver:~0,3%==DBG 
+if %DBGVer%==DBG (echo Using DBG version... Beware!)
 
 
 
@@ -51,7 +52,7 @@ REM here for compatibility
 
 
 REM Downloading upd info
-if %DBGVer%==False (
+if not %DBGVer%==DBG (
 curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentVer.dat >ver.dat
 ) else (
 curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentDEBUGVer.dat >ver.dat
