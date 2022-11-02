@@ -54,7 +54,7 @@ REM Downloading upd info
 if %DBGVer%==False (
 curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentVer.dat >ver.dat
 ) else (
-curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentDBGVer.dat >ver.dat
+curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentDEBUGVer.dat >ver.dat
 )
 
 set /a NewVer=<ver.dat
