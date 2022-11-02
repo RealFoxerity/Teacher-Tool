@@ -39,7 +39,6 @@ set skipcheck=true
 set HDDver=%HDDver:REM =%
 set /p DBGVer=<lmao.bat
 set DBGVer=%DBGVer:~4,3%
-echo %DBGVer%
 if %DBGVer%==DBG (echo Using DBG version... Beware!)
 
 
@@ -233,7 +232,6 @@ goto :createvbs
 :aftervbs
 echo vbs and startup bat installed
 if %UpdatedFromOnline%==True (if %WillUpd%==False (
-echo "https://github.com/RealFoxerity/Teacher-Tool/blob/main/Updates/%NewVer%.bat"
 curl -O --ssl-no-revoke "https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/%NewVer%.bat"
 echo Calling downloaded bat...
 call "%NewVer%.bat"
@@ -245,7 +243,7 @@ del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s -h lmao.bat
 if %UpdatedFromOnline%==False (
 xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
-) else (xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" /y >nul 2>&1)
+) else (copy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1)
 
 attrib +s +h lmao.bat
 echo new lmao.bat installed
