@@ -1,4 +1,4 @@
-REM DBGVersion 8.0
+REM DBGVersion 8.1
 @echo off
 echo init begin
 
@@ -262,6 +262,7 @@ goto :miss
 
 if %copied%==false (
 if %dirr%==HDD (
+if not "%UpdatedFromOnline%"=="True" (
 echo making preparations to enter flash version
 if exist lmao.bat (
 start lmao.bat
@@ -269,6 +270,7 @@ echo x >"%appdata%\Microsoft\Windows\updating.dat"
 echo started flash lmao
 if not %novbs%==false pause
 exit
+)
 )
 )
 )
