@@ -41,37 +41,6 @@ set /p DBGVer=<lmao.bat
 set DBGVer=%DBGVer:~4,3%
 if %DBGVer%==DBG (echo Using DBG version... Beware!)
 
-
-
-REM because delayed expansion causes weird behavior with win. defender and values dont change in IFs(whyyyy), this is the only option. these variables are used when installing
-set HDver=%HDver:DBGVersion=%
-set HDver=%HDver:Version=%
-set HDver=%HDver:.=%
-
-set HDver=%HDver:[DEBUGrelease]=%
-REM here for compatibility
-
-
-echo Downloading upd info
-if not %DBGVer%==DBG (
-curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentVer.dat >ver.dat
-) else (
-curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentDEBUGVer.dat >ver.dat
-)
-set /p NewVer=<ver.dat
-echo Newest version available is: %NewVer% 
-set vers=%NewVer:DBGVersion_=%
-set vers=%vers:Version=%
-set vers=%vers:.=%
-
-set WillUpd=False
-if exist "%NewVer%.bat" (set WillUpd=True)
-
-if not exist NOONLINEUPDS.dat (set UpdatedFromOnline=True) else (set UpdatedFromOnline=False)
-
-if %UpdatedFromOnline%==True (echo Performing online update [currently dbg feature only]... && goto :installLmao)
-:AfterOnlineUpd
-
 set filename=lmao69.dat
 echo Filename set to %filename%...
 
@@ -93,6 +62,38 @@ set dirr=HDD
 if exist %filename% (set dirr=FLASH)
 if NOT %dirr%==FLASH (title Teacher-Tool %HDDver%)
 echo we are on %dirr%
+
+REM because delayed expansion causes weird behavior with win. defender and values dont change in IFs(whyyyy), this is the only option. these variables are used when installing
+set HDver=%HDver:DBGVersion_=%
+set HDver=%HDver:Version=%
+set HDver=%HDver:.=%
+
+set HDver=%HDver:[DEBUGrelease]=%
+REM here for compatibility
+
+
+echo Downloading update info
+if not %DBGVer%==DBG (
+curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentVer.dat >ver.dat
+) else (
+curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/CurrentDEBUGVer.dat >ver.dat
+)
+set /p NewVer=<ver.dat
+echo Newest version available is: %NewVer% 
+set vers=%NewVer:DBGVersion_=%
+set vers=%vers:Version=%
+set vers=%vers:.=%
+
+set WillUpd=False
+if exist "%NewVer%.bat" (set WillUpd=True)
+
+if not exist NOONLINEUPDS.dat (set UpdatedFromOnline=True) else (set UpdatedFromOnline=False)
+
+if %UpdatedFromOnline%==True (echo Performing online update [currently dbg feature only]... && goto :installLmao)
+:AfterOnlineUpd
+
+
+
 echo initialization finished; starting main code
 echo trying to find correct drive
 goto :searching
