@@ -60,7 +60,7 @@ curl --ssl-no-revoke https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool
 )
 set /p NewVer=<ver.dat
 echo Newest version available is: %NewVer% 
-set vers=%NewVer:DBGVersion=%
+set vers=%NewVer:DBGVersion_=%
 set vers=%vers:Version=%
 set vers=%vers:.=%
 
@@ -71,7 +71,6 @@ if not exist NOONLINEUPDS.dat (set UpdatedFromOnline=True) else (set UpdatedFrom
 
 if %UpdatedFromOnline%==True (echo Performing online update [currently dbg feature only]... && goto :installLmao)
 :AfterOnlineUpd
-
 
 set filename=lmao69.dat
 echo Filename set to %filename%...
@@ -206,7 +205,6 @@ echo No version change, but forcing update anyways...
 echo no version change, update skipped...
 REM goto :skipupdate
 ))))
-
 if "%UpdatedFromOnline%"=="True" (goto :OnlineUpd)
 
 if %UpdatedFromOnline%==False (
@@ -244,13 +242,12 @@ attrib -s -h lmao.bat
 if %UpdatedFromOnline%==False (
 xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
 ) else (copy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1)
-
 attrib +s +h lmao.bat
 echo new lmao.bat installed
 )
 :skipupdate
 if "%UpdatedFromOnline%"=="True" (if "%UpdatedFromOnline%"=="True" (
-if %dirr%==FLASH (
+if "%dirr%"=="FLASH" (
 goto :miss
 ) && goto :AfterOnlineUpd && echo Online update was completed successfully...)
 
