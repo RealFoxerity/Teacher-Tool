@@ -1,4 +1,4 @@
-REM DBGVersion 8.0
+REM DBGVersion 8.1
 @echo off
 echo init begin
 
@@ -65,7 +65,8 @@ if NOT %dirr%==FLASH (title Teacher-Tool %HDDver%)
 echo we are on %dirr%
 
 REM because delayed expansion causes weird behavior with win. defender and values dont change in IFs(whyyyy), this is the only option. these variables are used when installing
-set HDver=%HDDver:DBGVersion_=%
+set HDver=%HDDver:DBGVersion=%
+set HDver=%HDver:_=%
 set HDver=%HDver:Version=%
 set HDver=%HDver:.=%
 
