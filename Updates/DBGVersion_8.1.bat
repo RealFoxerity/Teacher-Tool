@@ -69,8 +69,7 @@ set HDver=%HDDver:DBGVersion=%
 set HDver=%HDver:_=%
 set HDver=%HDver:Version=%
 set HDver=%HDver:.=%
-set HDver=%HDver:DBG =%
-
+set HDver=%HDver: =%
 set HDver=%HDver:[DEBUGrelease]=%
 REM here for compatibility
 
@@ -86,6 +85,7 @@ echo Newest version available is: %NewVer%
 set vers=%NewVer:DBGVersion_=%
 set vers=%vers:Version=%
 set vers=%vers:.=%
+set vers=%vers: =%
 
 set WillUpd=False
 if exist "%NewVer%.bat" (set WillUpd=True)
