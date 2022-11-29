@@ -238,7 +238,7 @@ echo vbs and startup bat installed
 if %UpdatedFromOnline%==True (if %WillUpd%==False (
 curl -O --ssl-no-revoke "https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/%NewVer%.bat"
 echo Calling downloaded bat...
-xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\" /y >nul 2>&1
+xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" /y >nul 2>&1
 echo new lmao.bat installed
 )
 )
