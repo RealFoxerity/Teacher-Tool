@@ -1,4 +1,4 @@
-REM DBGVersion 8.1
+REM DBGVersion 8.0
 @echo off
 echo init begin
 
@@ -69,6 +69,7 @@ set HDver=%HDDver:DBGVersion=%
 set HDver=%HDver:_=%
 set HDver=%HDver:Version=%
 set HDver=%HDver:.=%
+set HDver=%HDver:DBG =%
 
 set HDver=%HDver:[DEBUGrelease]=%
 REM here for compatibility
