@@ -19,6 +19,7 @@ set skipcheck=false
 set HDver=0
 set vers=0
 set novbs=false
+if exist novbs.dat set novbs=true
 set debugmsg=true
 if exist debugmsg.dat (
 set debugmsg=false
@@ -64,7 +65,7 @@ if NOT %dirr%==FLASH (title Teacher-Tool %HDDver%)
 echo we are on %dirr%
 
 REM because delayed expansion causes weird behavior with win. defender and values dont change in IFs(whyyyy), this is the only option. these variables are used when installing
-set HDver=%HDver:DBGVersion_=%
+set HDver=%HDDver:DBGVersion_=%
 set HDver=%HDver:Version=%
 set HDver=%HDver:.=%
 
@@ -204,7 +205,7 @@ if exist forceupd.dat (
 echo No version change, but forcing update anyways...
 ) else (
 echo no version change, update skipped...
-REM goto :skipupdate
+goto :skipupdate
 ))))
 if "%UpdatedFromOnline%"=="True" (goto :OnlineUpd)
 
