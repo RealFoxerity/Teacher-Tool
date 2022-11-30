@@ -195,7 +195,8 @@ attrib +h beware.dat
 
 set ver=%ver:REM =%
 if %dirr%==FLASH (title Teacher-Tool %ver%)
-set vers=%ver:~8%
+set vers=%ver:DBGVersion=%
+set vers=%ver:Version=%
 set vers=%vers:.=%
 set vers=%vers:[DEBUGrelease]=%
 
